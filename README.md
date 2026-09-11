@@ -2,7 +2,7 @@
 
 Flask REST API with:
 
-- JWT auth (`register`, `login`, `me`)
+- JWT auth (`register`, `login`)
 - Product CRUD
 - Idempotency-Key support on POST endpoints
 - ETag + If-Match optimistic concurrency for PATCH
