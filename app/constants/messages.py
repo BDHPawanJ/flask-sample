@@ -1,0 +1,50 @@
+"""Centralized response messages and application problem codes."""
+
+
+class APIMessages:
+    """Human-readable API response and error message constants."""
+    BAD_REQUEST = "Bad Request"
+    UNAUTHORIZED = "Unauthorized"
+    NOT_FOUND = "Not Found"
+    CONFLICT = "Conflict"
+    VALIDATION_ERROR = "Validation Error"
+    PRECONDITION_FAILED = "Precondition Failed"
+    PRECONDITION_REQUIRED = "Precondition Required"
+    INTERNAL_SERVER_ERROR = "Internal Server Error"
+
+    REQUEST_VALIDATION_FAILED = "Request validation failed."
+    INTERNAL_UNEXPECTED_ERROR = "An unexpected error occurred."
+    MISSING_OR_INVALID_AUTH_TOKEN = "Missing or invalid authorization token."
+    INVALID_AUTH_TOKEN = "Invalid authorization token."
+    EXPIRED_AUTH_TOKEN = "Authorization token has expired."
+    MISSING_IDEMPOTENCY_KEY = "Idempotency-Key header is required."
+    IDEMPOTENCY_PAYLOAD_MISMATCH = (
+        "Idempotency-Key was reused with a different payload."
+    )
+    INVALID_EMAIL_OR_PASSWORD = "Invalid email or password."
+    AUTHENTICATED_USER_RESOLUTION_FAILED = "Unable to resolve authenticated user."
+    EMAIL_ALREADY_EXISTS = "Email already exists."
+    LIMIT_OUT_OF_RANGE = "limit must be between 1 and 100."
+    INVALID_CURSOR = "Invalid cursor."
+    PRODUCT_NOT_FOUND = "Product not found."
+    MISSING_IF_MATCH = "If-Match header is required."
+    ETAG_MISMATCH = "ETag does not match current resource version."
+    PATCH_BODY_REQUIRED = "At least one updatable field must be provided."
+
+
+class APIProblemCodes:
+    """Machine-readable problem code constants for RFC7807 responses."""
+    VALIDATION_ERROR = "validation_error"
+    HTTP_ERROR = "http_error"
+    INTERNAL_ERROR = "internal_error"
+    UNAUTHORIZED = "unauthorized"
+    INVALID_TOKEN = "invalid_token"
+    TOKEN_EXPIRED = "token_expired"
+    MISSING_IDEMPOTENCY_KEY = "missing_idempotency_key"
+    IDEMPOTENCY_PAYLOAD_MISMATCH = "idempotency_payload_mismatch"
+    CONFLICT = "conflict"
+    INVALID_CREDENTIALS = "invalid_credentials"
+    INVALID_CURSOR = "invalid_cursor"
+    NOT_FOUND = "not_found"
+    MISSING_IF_MATCH = "missing_if_match"
+    ETAG_MISMATCH = "etag_mismatch"
