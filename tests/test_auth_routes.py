@@ -68,6 +68,18 @@ def test_login_and_me(client, unique_email):
     assert me_response.json["email"] == unique_email
 
 
+def test_register_accepts_password_longer_than_bcrypt_limit(client, unique_email):
+    """Ensure registration works for passwords longer than bcrypt's 72-byte limit."""
+    long_password = "a" * 100
+    response = client.post(
+        "/v1/auth/register",
+        json={"email": unique_email, "password": long_password},
+        headers={"Idempotency-Key": f"reg-{uuid.uuid4()}"},
+    )
+    assert response.status_code == 201
+    assert response.json["email"] == unique_email
+
+
 def test_me_unauthorized(client):
     """Ensure /me requires authentication."""
     response = client.get("/v1/auth/me")

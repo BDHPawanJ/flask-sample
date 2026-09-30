@@ -3,7 +3,7 @@ from flask import Blueprint, request
 from app.constants import APIMessages, APIProblemCodes, HTTPStatusCodes
 from app.dependencies.auth import get_current_user, require_auth
 from app.schemas.auth import LoginRequestSchema, RegisterRequestSchema
-from app.services.auth_service import AuthService
+from app.services.auth_service import AuthService, EmailAlreadyExistsError
 from app.services.idempotency_service import IdempotencyService
 from app.utils.problem import make_problem_response
 from app.utils.responses import json_response
@@ -53,7 +53,7 @@ def register():
             email=payload["email"],
             password=payload["password"],
         )
-    except ValueError as err:
+    except EmailAlreadyExistsError as err:
         return make_problem_response(
             status=HTTPStatusCodes.CONFLICT,
             title=APIMessages.CONFLICT,

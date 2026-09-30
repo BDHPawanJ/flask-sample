@@ -81,6 +81,7 @@ Tests use `TEST_DATABASE_URL` from `.env` and expect a reachable MySQL test data
 
 - `POST /v1/auth/register` (requires `Idempotency-Key`)
 - `POST /v1/auth/login`
+- Registration password length: 8 to 128 characters
 - `GET /v1/auth/me` (Bearer token required)
 
 ### Products

@@ -15,7 +15,7 @@ def hash_password(password: str) -> str:
     Returns:
         A secure password hash string.
     """
-    return pwd_context.hash(password)
+    return pwd_context.handler("bcrypt_sha256").hash(password)
 
 
 def verify_password(password: str, password_hash: str) -> bool:

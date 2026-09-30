@@ -7,6 +7,10 @@ from app.models.user import User
 from app.utils.serialization import to_iso_z
 
 
+class EmailAlreadyExistsError(ValueError):
+    """Raised when registration is attempted with an existing email."""
+
+
 class AuthService:
     """Business logic for authentication and user identity operations."""
 
@@ -26,7 +30,7 @@ class AuthService:
         """
         existing_user = User.query.filter_by(email=email).first()
         if existing_user is not None:
-            raise ValueError("Email already exists.")
+            raise EmailAlreadyExistsError("Email already exists.")
 
         user = User(email=email, password_hash=hash_password(password), is_active=True)
         db.session.add(user)
